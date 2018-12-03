@@ -1,0 +1,26 @@
+<%= form_with(model: [@property, PropertyMaterial.new], local: true, url:[@property, @property_material]) do |form| %>
+
+<p>
+   <strong>Materiales:</strong>
+   <ul> 
+   <% @property.materials.each do |material| %>
+    <li> <%= material.name%></li>
+    <li> <%= material.value%></li>
+   <%end%>
+   </ul>
+</p>
+
+  <div class="field">
+    <%= form.label :property_id %>
+    <%= form.label :property_id,  value: @property.id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :materail_id %>
+    <%= form.select :materail_id, Material.pluck(:name, :id), prompt: 'Elige Material', class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit method: :post %>
+  </div>
+<% end %>

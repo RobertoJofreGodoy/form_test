@@ -1,0 +1,15 @@
+<%= form_for @property do |f| %>
+  Material:
+  <ul>
+    <%= f.fields_for :property_materials do |material_form| %>
+      <li>
+        <%= material_form.label :property_id %>
+        <%= material_form.label :property_id,  value: @property.id %>
+ 
+        <%= material_form.label :materail_id %>
+        <%= material_form.select :materail_id, Material.pluck(:name, :id), prompt: 'Elige Material', class: 'form-control' %> %>
+        ...
+      </li>
+    <% end %>
+  </ul>
+<% end %>

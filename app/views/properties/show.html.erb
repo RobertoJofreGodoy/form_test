@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @property.number %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @property.name %>
+</p>
+
+<p>
+  <strong>Assessment:</strong>
+  <%= @property.assessment.id %>
+</p>
+
+<p>
+   <strong>Materiales:</strong>
+   <ul> 
+   <% @property.materials.each do |material| %>
+    <li> <%= material.name%></li>
+    <li> <%= material.value%></li>
+   <%end%>
+   </ul>
+ </p>
+
+<%= link_to 'Edit', edit_property_path %> |
+<%= link_to 'Back', assessment_path(@property.assessment.id) %>

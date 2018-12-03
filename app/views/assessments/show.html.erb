@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @assessment.number %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @assessment.location %>
+</p>
+
+<p>
+  <strong>Inhabited:</strong>
+  <%= @assessment.inhabited %>
+</p>
+<table>
+  <thead>
+    <th>Id Propiedad</th>
+  </thead>
+  <tbody>
+      <% @assessment.properties.each do |property| %>
+        <tr>
+          <td><%=property.id%></td>
+          <td><%=property.name%></td>
+          <td><%= link_to 'Detalles', property_path %></td>
+          <td><%= link_to 'Editar', edit_property_path%></td>
+        </tr> 
+      <%end%> 
+  </tbody>
+</table>
+
+<%= render 'new_property.html', assessment: @assessment %>
+
+<%= link_to 'Edit', edit_assessment_path(@assessment) %> 
+<%= link_to 'Back', assessments_path %>
